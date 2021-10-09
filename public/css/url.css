@@ -1,0 +1,39 @@
+.imgLink {
+  height: 70px;
+}
+
+#fullUrl{
+  width: 80%;
+  max-width: 450px;
+  background-color:whitesmoke;
+  
+}
+
+::placeholder{
+  color:#A9A9A9 !important;
+}
+
+.form-text{
+  font-size: 0.8rem;
+}
+
+.form-text a{
+  color: #A9A9A9;
+}
+
+.btnShorten {
+  width: 180px;
+}
+
+.createText{
+  border:1px solid #C0C0C0;
+}
+
+.newURL{
+  color:#FF0000;
+  text-decoration: none;
+}
+.newURL:hover{
+  color:#FF69B4;
+  text-decoration: underline;
+}

@@ -21,6 +21,9 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+// 設定靜態文件
+app.use(express.static('public'))
+
 // 設定首頁路由
 app.get('/', (req, res) => {
   res.render('index')
