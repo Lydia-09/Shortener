@@ -1,7 +1,5 @@
-const mongoose = require('mongoose')
-const Url = require('../url')
-mongoose.connect('mongodb://localhost/url-shortener')
-const db = mongoose.connection
+const URL = require('../url')
+const db = require('../../config/mongoose')
 
 const urlData = [
   {
@@ -18,13 +16,9 @@ const urlData = [
   }
 ]
 
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-
 db.once('open', () => {
   urlData.forEach((item) => {
-    Url.create({
+    URL.create({
       fullUrl: item.fullUrl,
       shortUrl: item.shortUrl
     })
