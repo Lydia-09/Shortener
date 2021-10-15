@@ -16,7 +16,23 @@ router.get('/', (req, res) => {
 
 // 產生短網址
 router.post('/', (req, res) => {
-  const fullUrl = req.body.fullUrl
+  // 去除網址末端的 '/'，讓相同網址的判斷有一致性。
+  const inputUrl = req.body.fullUrl.trim()
+  const lastText = inputUrl.charAt(inputUrl.length-1)
+  let fullUrl = ''
+  if (lastText === '/') {
+    fullUrl += inputUrl.substring(0, inputUrl.lastIndexOf('/'))
+  } else {
+    fullUrl += inputUrl
+  }
+  req.flash('fullUrl', fullUrl)
+
+  // 若使用者輸入的網址中，有多餘的空白字元，則防止表單送出並提示使用者
+  if (fullUrl.includes(' ')) {
+    req.flash('error', '您輸入的網址中，有多餘的空白字元，請重新輸入。')
+    return res.redirect('/')
+  }
+  
   URL.findOne({ fullUrl })
     .lean()
     .then( url => {
@@ -30,10 +46,12 @@ router.post('/', (req, res) => {
         // 輸入相同網址時，產生一樣的縮址
         shortenLink = domains + url.shortUrl
       }
-
-      res.render('index', { fullUrl, shortenLink })     
+        
+      req.flash('success', shortenLink)
+      return res.redirect('/')   
     })
     .catch(error => console.error(error))
+
 })
 
 // 設定轉址

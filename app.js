@@ -1,6 +1,8 @@
 // 載入 express 並建構應用程式伺服器
 const express = require('express')
 const exphbs = require('express-handlebars')
+const session = require('express-session')
+const flash = require('connect-flash')
 const routes = require('./routes')
 require('./config/mongoose')
 
@@ -14,7 +16,27 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 // use body-parser
 app.use(express.urlencoded({ extended: true}))
+// 設定 session
+app.use(session({
+  secret: 'mySecret',
+  name: 'user',
+  saveUninitialized: false,
+  resave: true,
+}))
+// Connect flash
+app.use(flash())
+// global 的 middleware
+// setup local variables so we can use it anywhere in our app
+app.use(function (req, res, next) {
+  res.locals.success = req.flash('success')
+  res.locals.emptyText = req.flash('emptyText')
+  res.locals.error = req.flash('error')
+  res.locals.fullUrl = req.flash('fullUrl')
+  next()
+})
+
 app.use(routes)
+
 
 
 

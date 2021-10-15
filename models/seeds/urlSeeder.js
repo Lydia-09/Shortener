@@ -3,15 +3,15 @@ const db = require('../../config/mongoose')
 
 const urlData = [
   {
-    fullUrl: 'https://www.google.com/',
+    fullUrl: 'https://www.google.com',
     shortUrl: 'derD3'
   },
   {
-    fullUrl: 'https://www.taaze.tw/',
+    fullUrl: 'https://www.taaze.tw',
     shortUrl: 'djkCE'
   },
   {
-    fullUrl: 'https://www.cwb.gov.tw/',
+    fullUrl: 'https://www.cwb.gov.tw',
     shortUrl: 'jkJQ5'
   }
 ]

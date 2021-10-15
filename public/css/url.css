@@ -2,38 +2,41 @@
   height: 70px;
 }
 
-#fullUrl{
+#fullUrl,
+.alert-warning {
   width: 80%;
   max-width: 450px;
-  background-color:whitesmoke;
-  
 }
 
-::placeholder{
-  color:#A9A9A9 !important;
+#fulUrl {
+  background-color: whitesmoke;
 }
 
-.form-text{
+::placeholder {
+  color: #a9a9a9 !important;
+}
+
+.form-text {
   font-size: 0.8rem;
 }
 
-.form-text a{
-  color: #A9A9A9;
+.form-text a {
+  color: #a9a9a9;
 }
 
 .btnShorten {
   width: 180px;
 }
 
-.createText{
-  border:1px solid #C0C0C0;
+.createText {
+  border: 1px solid #c0c0c0;
 }
 
-.newURL{
-  color:#FF0000;
+.newURL {
+  color: #ff0000;
   text-decoration: none;
 }
-.newURL:hover{
-  color:#FF69B4;
+.newURL:hover {
+  color: #ff69b4;
   text-decoration: underline;
 }
